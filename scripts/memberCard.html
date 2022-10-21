@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Smart Keeper System</title>
+        <!--Connect with Css file-->
+        <link rel="stylesheet" href="style_main.css">
+        <!--Add the icon for website tag-->
+        <link rel="icon" href="./images_main_page/logo.png" />
+    </head>
+    <body>
+        <!--Link the metamask_function.js for connect the metamask wallet function-->
+        <script  src="metamask_function.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!--Main content here ...-->
+        <div class="container" style="height: 110vh;background-image: url(./images_main_page/robot.png)">
+                <nav>
+                    <a href="index.html">
+                        <img src="./images_main_page/logo.png" class="logo">
+                    </a>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="memberCard.html">Member Card</a></li>
+                        <li><a href="info.html">Info</a></li>
+                    </ul>
+                    <a href="#" id="userAddress" class="btn" onclick="loginWithEth()">Login with MetaMask</a>
+                </nav>
+                    
+                <div style="display: flex;">
+                    <div>
+                        <h1 style="padding-top: 20px; padding-left: 120px;">MEMBER CARD</h1>
+                        <hr style="width: 500px; padding-top: 15px; background-color: blanchedalmond;"></hr>
+                        <!-- Content of card here ...-->
+                        <div class="card">
+                            <div class="card-inner"  id="maincard"  onclick="cardchange()">
+                                <div class="front">
+                                    <img src="./images_main_page/map.png" class="map-img">
+                                    <div class="row">
+                                        <img src="./images_main_page/logo.png" width="60px">
+                                        <img src="./images_main_page/student_logo.png" width="50px">
+                                    </div>
+                                    <div class="row card-no">
+                                        <p id="cardAccount"></p>
+                    
+                                    </div>
+                                    <div class="row card-holder">
+                                        <p>CARD HOLDER</p>
+                                        <p>VALID TILL</p>
+                                    </div>
+                                    <div class="row name">
+                                        <p>Member</p>
+                                        <p>Forever</p>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                        <img src="./images_main_page/map.png" class="map-img ">
+                                        
+                                        <div class="bar"></div>
+                                        <div class="row card-cvv">
+                                            <div>
+                                                <p style="font-size:20px">Institute of Vocational Education</p>
+                                                
+                                            </div>
+                                            <p>|  From</p>
+                                        </div>
+                                        <div class="row card-text">
+                                            <p>Study hard, work hard, make the youth more glorious.</p>
+                    
+                                        </div>
+                                        <div class="row signature">
+                                            <p>Member Card</p>
+                                            <img src="./images_main_page/eth_logo.png" width="30px">
+                                        </div>
+                                </div>
+                            </div>
+                        </div><br>
+                        <!--End of the card-->
+                        <div class="copy-text"> 
+                            <button id= "copybtn" class="btn" onclick="copytext()">Copy Address</button>
+                            <!-- The text field -->
+                            <input type="text" disabled id="copycardaddress" style="line-height: 35px; font-size: 14px; text-align:center ;" size="52">
+                        </div>
+                    </div>
+                    <div style="margin-top: 19%;margin-left: 20px;">
+                        <img id="info_btn" src="./images_main_page/info-icon.png" style="width:40px;cursor: pointer;"/>
+                    </div>
+                    <div id="info" style="display: none;height: 580px;margin-left: 100px;width: 580px;background-color: rgba(0, 0, 0, 0.733);">
+                        <img id="closeinfo_btn" style="cursor: pointer;width: 40px; margin-left: 90%;" src="./images_main_page/close.png"/>
+                        <h3 style="margin-bottom: 30px;margin-left: 11%;color: aquamarine;">WHAT IS MEMBER CARD ?</h3>
+                        <p style="margin-left: 11%;margin-bottom: 30px;">It represents the member of the relation in Smart Keeper System.</p>
+                        <h3 style="margin-bottom: 30px;margin-left: 11%;color: aqua;">HOW TO USE ?</h3>
+                        <img src="./images_main_page/member_card_info.png" style="border-radius: 10px;margin-bottom: 10px;margin-left: 11%;width: 450px;">
+                        <p style="margin-left: 11%;margin-bottom: 30px;">
+                            Show your NFT and member card to your employeer for
+                            meet the academic requirements, and <span style="color:rgb(255, 255, 255)">prove that you are a member in Smart Keeper System</span>.
+                            The employeer can search the NFT from your member card .
+                        </p>
+                        <h3 style="margin-bottom: 30px;margin-left: 11%;color: rgb(248, 152, 9);">BENEFIT OF MEMBER CARD</h3>
+                        <p style="margin-left: 11%;margin-bottom: 30px;">(Please look forward to...)</p>
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function(){
+                        $("#info_btn").click(function(){
+                            $("#info").show(2000);
+                        });
+                        $("#closeinfo_btn").click(function(){
+                            $("#info").hide(2000);
+                        });
+                    });
+                </script>
+             
+                   
+
+
+
+
+
+
+        </div>
+        <!--End of the main content-->
+    </body>
+</html>

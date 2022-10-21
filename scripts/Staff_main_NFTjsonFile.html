@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            <meta charset="UTF-8">
+            <title>Smart Keeper System</title>
+            <link rel="stylesheet" href="main.css">
+            <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+            <script src="account_function.js"></script>
+            <!--Add the icon for website tag-->
+            <link rel="icon" href="images_main_page/logo.png" />
+            <!--Lab2 : You must add this JavaScript code to add the web3 object-->
+        <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+   
+
+        <script src="https://cdn.jsdelivr.net/npm/@alch/alchemy-web3@latest/dist/alchemyWeb3.min.js"></script>
+
+        <style>
+            #json{
+                padding: 20px;
+                
+                background: #eee;
+                border-radius: 10px;
+            }
+            button{
+                background: rgb(8, 184, 96);
+                color:#fff;
+                border: none;
+                padding:10px;
+            }
+
+        
+        </style>
+    </head>
+    <body>
+    
+        <div class="wrapper">
+            <div class="sidebar">
+                <img src="images/logo.png" width="200px" style="border-radius: 10px;margin-left: 45px"/>
+                <ul>
+                    <li><input type="text" id="userAddress" 
+                        style="font-size: 20px;text-align: center;background-color:rgb(236, 255, 127) ; border: none; 
+                        border-radius: 10px; padding: 20px;" ></li>
+                    <li><a href="Staff_main_index.html">Home</a></li>
+                    <li><a href='Staff_main_allNFT.html'>All NFT</a></li>
+                    <li><a href='Staff_main_searchNFT.html'>Search NFT</a></li>
+                    <li><a href='Staff_main_NFTjsonFile.html'>NFT JSON file</a></li>
+         
+
+
+                    <li><a href="StaffLogin.html"><input onclick="logout()" style="cursor: pointer; height: 50px; width: 100px" type="submit" value="Logout" name="logoutButton"></a></li>
+                </ul> 
+            </div>
+            <div class="main_content">
+                <div class="header">
+                    <b> Hong Kong Institute of Vocational Education</b>
+                    
+                </div>  
+                
+                <div class="info">
+                    
+                    <!--Here add the information-->
+                    <div>
+
+                        <diV><h1>File URL Generator</h1></h1></diV>
+                        <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+   
+                        <div style="display:flex">
+                        
+                            <table border="0" style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;padding:20px;background-color:aquamarine" >
+                                <tr>
+                                    <td>
+                                        <button style="padding:30px" id="upload_widget" class="cloudinary-button">Upload the files</button>
+                                    </td>  
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="start-screen-recording"><div><div class="rec-dot"></div><span>Create Video</span></div></div><script src="https://api.apowersoft.com/screen-recorder?lang=en" defer></script>
+                                    </td>  
+                                </tr>
+
+                            </table>
+                        
+
+                            <table border="0" width="0%" style="padding: 20px;border-bottom-right-radius: 10px;border-top-right-radius: 10px;background-color:coral" >
+                                <tr>
+                                    <td>
+                                        <label>File URL : </label>
+                                    </td>
+                                    <td>
+                                        <input  type="text" id="FILE" size="110" style="border-radius: 10px;text-align: center;border:none;font-size: 15px;padding: 10px;"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>QR code URL : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="QRCODE" size="110" style="border-radius: 10px;text-align: center;border:none;font-size: 15px;padding: 10px;"/>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img style="display:none" id="uploadedimage" src="" width="200px"></img>
+                                    </td>
+                                </tr>
+                            </table>
+                        
+                        </div>
+   
+                        <!-- placeholder for uploaded image -->
+                        <div></div> 
+                        <!-- cloudinary upload widget -->
+                        <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+                        <!-- local upload instantiation -->
+                        <script src="upload_widget.js" type="text/javascript"></script>
+    
+                        <div><h2>NFT normal format / Result output :</h2></div>
+                        <div style="background-color:beige;padding:20px;border-radius: 10px;">
+                            <div id="json"></div><br>
+                            <button style="margin-bottom: 50px;cursor:pointer" onclick="onDownload()">Download the normal format</button>
+                        </div>
+                            
+
+
+
+                        <div><h2>Simple Format</h2></div>
+                        <div>
+                        <table width="70%" border="0" style="background-color:bisque;padding:20px;border-radius: 10px;">
+                            <tr>
+                                <td>
+                                    <label>Title:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="name2" size="50px" style="font-size: 20px;text-align: center;padding:20px;border: none;border-radius: 10px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Description:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="description2" size="50px" style="font-size: 20px;text-align: center;padding:20px;border: none;border-radius: 10px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>QR code_URL:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="QRcode_url2" size="50px" style="font-size: 20px;text-align: center;padding:20px;border: none;border-radius: 10px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button style="cursor:pointer" onclick="setJsonData2()">Set Value & download</button>
+                                </td>
+                                
+                            </tr>
+                            
+                        </table>
+
+
+                        </div>
+
+                        <div><h2>Transcript Format</h2></div>
+                        <div>
+                        <table width="70%" border="0" style="background-color:bisque;padding:20px;border-radius: 10px;">
+                            <tr>
+                                <td>
+                                    <label>Title:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="name1" size="50px" style="font-size: 20px;text-align: center;padding:20px;border: none;border-radius: 10px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Description:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="description" size="50px" style="font-size: 20px;text-align: center;padding:20px;border: none;border-radius: 10px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>School Name:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="school_name" size="50px" style="font-size: 20px;text-align: center;padding:20px;border: none;border-radius: 10px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Student Name:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="student_name" size="50px" style="font-size: 20px;text-align: center;padding:20px;border: none;border-radius: 10px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Student wallet address:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="student_address" size="50px" style="font-size: 20px;text-align: center;padding:20px;border: none;border-radius: 10px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>CGPA:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="cgpa" size="50px" style="font-size: 20px;text-align: center;padding:20px;border: none;border-radius: 10px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Subject:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="subject" size="50px" style="font-size: 20px;text-align: center;padding:20px;border: none;border-radius: 10px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>file_URL:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="file_url" size="50px" style="font-size: 20px;text-align: center;padding:20px;border: none;border-radius: 10px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>QR code_URL:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="QRcode_url" size="50px" style="font-size: 20px;text-align: center;padding:20px;border: none;border-radius: 10px;"/>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <button style="cursor:pointer" onclick="setJsonData()">Set Value & download</button>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                        </div>
+    <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
+    <script>
+        async function getCID(){
+            const node = await Ipfs.create()
+            const url =  document.getElementById("cid").value + "";
+            console.log(url);
+            const results = await node.add(url)
+            console.log(results)
+            const cid = results.path
+            console.log('CID created via ipfs.add:', cid)
+            const CID_IPFS = "ipfs://"+cid
+            document.getElementById("cid_result").value = CID_IPFS
+            console.log(CID_IPFS)
+        //    const data = await node.cat(cid)
+        //    console.log('Data read back via ipfs.cat:', new TextDecoder().decode(data))
+        }
+        
+        
+    </script>
+
+	<script>
+    //const { IPFS } = require('ipfs-core') 
+
+   
+    const jsonData = {
+            "attributes": [
+                {
+                "trait_type": "",
+                "value": ""
+                },
+                {
+                "trait_type": "",
+                "value": ""
+                },
+                {
+                "trait_type": "",
+                "value": ""
+                }
+            ],
+            "description": "",
+            "image": "",
+            "name": ""
+            }
+
+    async function setJsonData(){
+        const NFT = {
+                    "attributes": [
+                        {
+                        "trait_type": "CGPA",
+                        "value": "3.2"
+                        },
+                        {
+                        "trait_type": "Subject",
+                        "value": "Software Engineering HD"
+                        },
+                        {
+                        "trait_type": "file_url",
+                        "value": "Software Engineering HD"
+                        },
+                        {
+                        "trait_type": "School Name",
+                        "value": "IVE"
+                        },
+                        {
+                        "trait_type": "Student Name",
+                        "value": "Ho Kai Chun"
+                        },
+                        {
+                        "trait_type": "Student address",
+                        "value": "0X00afdxxxxxxxxxxx"
+                        },
+                    ],
+                    "description": "IVE test",
+                    "image": "ipfs://QmWmvTJmJU3pozR9ZHFmQC2DNDwi2XJtf3QGyYiiagFSWb",
+                    "name": "IVE"
+                    };
+        
+        NFT.name = document.getElementById("name1").value;
+        NFT.description = document.getElementById("description").value;
+        NFT.attributes[0].value = document.getElementById("cgpa").value;
+        NFT.attributes[1].value = document.getElementById("subject").value;
+        NFT.attributes[2].value = document.getElementById("file_url").value;
+        NFT.attributes[3].value = document.getElementById("school_name").value;
+        NFT.attributes[4].value = document.getElementById("student_name").value;
+        NFT.attributes[5].value = document.getElementById("student_address").value;
+        NFT.image = document.getElementById("QRcode_url").value;
+
+
+        const e = document.getElementById('json');
+        e.innerHTML = JSON.stringify(NFT);
+        download(JSON.stringify(NFT), "NFT_transcript_data.json", "text/plain");
+    }
+
+    async function setJsonData2(){
+        const NFT = {
+                    
+                    "description": "IVE test",
+                    "image": "ipfs://QmWmvTJmJU3pozR9ZHFmQC2DNDwi2XJtf3QGyYiiagFSWb",
+                    "name": "IVE"
+
+                    };
+        
+        NFT.name = document.getElementById("name2").value;
+        NFT.description = document.getElementById("description2").value;
+        NFT.image = document.getElementById("QRcode_url2").value;
+
+
+        const e = document.getElementById('json');
+        e.innerHTML = JSON.stringify(NFT);
+        download(JSON.stringify(NFT), "NFT_data_simple.json", "text/plain");
+    }
+
+        const e = document.getElementById('json');
+        e.innerHTML = JSON.stringify(jsonData);
+
+        
+        function download(content, fileName, contentType) {
+        const a = document.createElement("a");
+        const file = new Blob([content], { type: contentType });
+        a.href = URL.createObjectURL(file);
+        a.download = fileName;
+        a.click();
+        }
+
+        function onDownload(){
+            download(JSON.stringify(jsonData), "NFTcustomData.json", "text/plain");
+        }
+            
+	</script>
+
+
+                    </div>
+
+                    
+
+                    
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+
+Testnet : rinkeby 
+Token : Smart Keeper Token (NFT)
+URL : https://rinkeby.etherscan.io/address/0xD5724FBd715DccFCF8049a98644cdD3c51c10B9E
+
+Connect Database : MYSQL Database
+
+
+Contract info :
+    Contract Address  : 0xD5724FBd715DccFCF8049a98644cdD3c51c10B9E
+    Contract creator  : 0x8c5bB5a9Da618645f44F746110Cc83ea0622C19A
+    Developer address : 0x8c5bB5a9Da618645f44F746110Cc83ea0622C19A
+    Developer private key : 57f201187b7e0992ec3ef929b94ebd899bb818df44ec18181c1b38ebec8f74d0
+
+Test account :
+    Student 1 :  public  key [0x2331923f1b1E0b21475048A27F715a3sB9e99d5F5]
+                 private key [0x7fe2621d5bd691d371c1d189ba44c5122863b6ce790a7b8100c53dcbb7ce8f67]
+
+    Student 2 :  public  key [0x00F882145c45FE69076e2D3b3Db1a4e7c87c377B]
+                 private key [0x52a0032531ad205bedf425ec3f345453541541545e42d1268f2d2f3c7cea5c59]
+    
+    Admin     :  public  key [0xb8140b0a42907A0988d5f28c8d33A2EdeccFE5Df]
+                 private key [0x56b41b63b35510f9e30f3c5349ad04a1427b4b8e4a883f8d3cadc9fd32decebb]
+
+    Staff     :  public  key [0x4a82cb26a5A001aF3C22E7fdD1B27e24588E9173]
+                 private key [0x45767ab2e1133caf08b37a9b9301e1b7f4ba618dc8c49e578e69d0afe31365b3]
+

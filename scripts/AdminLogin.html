@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Smart Keeper System</title>
+    <link rel="shortcut icon" href="images/sublogo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style_login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+  </head>
+  <body>
+
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <script src="account_function.js"></script>
+  
+    <video class="covervideo" autoplay muted loop id="myVideo">
+      <source src="video/covervideo3.mp4" type="video/mp4">
+    
+    </video>
+
+    <!--form area start-->
+    <div class="form">
+      <!--login form start-->
+      
+
+        <img src="images/logo.png" width="200%">
+        <input id="role" class="user-input" value="Admin" style="background-color:rgba(72, 230, 33, 0.637);" readonly>
+        <input type="text" onclick="getAccount()" id="userAddress" class="user-input"  style="cursor:pointer;font-size: 10px ;background-color:rgba(20, 214, 232, 0.342)" placeholder="Click me to connect Metamask wallet" readonly required>
+        <a href="Admin_main_index.html"><input type="submit" class="btn" value="LOGIN"/></a> 
+
+        
+        <div class="options-02">
+          <p>Back to menu page? 
+              <a href="menu.html">
+                Menu page</a>
+          </p>
+        </div>
+
+        <br>
+      
+      <!--login form end-->
+    </div>
+    <!--form area end-->
+
+    
+
+  </body>
+</html>

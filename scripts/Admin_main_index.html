@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            <meta charset="UTF-8">
+            <title>Smart Keeper System</title>
+            <link rel="stylesheet" href="main.css">
+            <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+            <script src="account_function.js"></script>
+            <!--Add the icon for website tag-->
+            <link rel="icon" href="images_main_page/logo.png" />
+            <!--Lab2 : You must add this JavaScript code to add the web3 object-->
+        <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+   
+
+        <script src="https://cdn.jsdelivr.net/npm/@alch/alchemy-web3@latest/dist/alchemyWeb3.min.js"></script>
+
+        <script>
+            // Now your script:
+            const web3 = AlchemyWeb3.createAlchemyWeb3(
+                "https://eth-goerli.g.alchemy.com/v2/DmztyXRQhUDDUhilI_8QQ4R4jH82vjy7"
+            )
+
+            async function main() {
+                const web3 = AlchemyWeb3.createAlchemyWeb3("https://eth-goerli.g.alchemy.com/v2/DmztyXRQhUDDUhilI_8QQ4R4jH82vjy7")
+                const blockNumber = await web3.eth.getBlockNumber()
+                console.log("My first exercise! The latest block number is " + blockNumber)
+
+                // In the browser you can also output to the DOM:
+                document.getElementById("resultNFTcount").innerHTML += "My first exercise! The latest block number is " + blockNumber
+            }
+
+            async function getnft(){
+                const ownerAddr = document.getElementById("publicKey").value;
+                const nfts = await web3.alchemy.getNfts({owner: ownerAddr})
+                // Print owner's wallet address:
+
+
+                console.log("fetching NFTs for address:", ownerAddr);
+                console.log("...");
+                
+                // Print total NFT count returned in the response:
+                console.log("number of NFTs found:", nfts.totalCount);
+                document.getElementById("resultNFTcount").innerHTML =  nfts.totalCount;
+                console.log("...");
+                console.log(nfts.totalCount);
+                // Print contract address and tokenId for each NFT:
+                for (const nft of nfts.ownedNfts) {
+                    console.log("===");
+                    console.log("contract address:", nft.contract.address);
+                    console.log("token ID:", nft.id.tokenId);
+                }
+                console.log("===");
+                console.log(nfts);
+            }
+            
+        </script>
+    </head>
+    <body>
+    
+        <div class="wrapper">
+            <div class="sidebar">
+                <img src="images/logo.png" width="200px" style="border-radius: 10px;margin-left: 45px"/>
+                <ul>
+                    <li><input type="text" id="userAddress" 
+                        style="font-size: 20px;text-align: center;background-color:rgba(144, 242, 119, 0.855); border: none; 
+                        border-radius: 10px; padding: 20px;" ></li>
+                    <li><a href="Admin_main_index.html">Home</a></li>
+                    <li><a href='Admin_main_createAccount.html'>Account Management</a></li>
+                    <li><a href='Admin_main_allNFT.html'>All NFT</a></li>
+                    <li><a href='Admin_main_searchNFT.html'>Search NFT</a></li>
+                    
+                    <li><a href='Admin_main_NFTjsonFile.html'>NFT JSON file</a></li>
+                    <li><a href='Admin_main_createNFT.html'>NFT Generator</a></li>
+
+
+                    <li><a href="AdminLogin.html"><input onclick="logout()" style="cursor: pointer; height: 50px; width: 100px" type="submit" value="Logout" name="logoutButton"></a></li>
+                </ul> 
+            </div>
+            <div class="main_content">
+                <div class="header">
+                    <b> Hong Kong Institute of Vocational Education</b>
+                    
+                </div>  
+                
+                <div class="info">
+                    
+                    <!--Here add the information-->
+
+                    <div>
+                        <h1>Contract Address :</h1>
+                        <div>
+                            <table border="0" width="1200px" style="border-radius: 10px;padding: 20px;background-color:rgba(24, 53, 240, 0.821);">
+                                <tr>
+                                    <td>
+                                        <b style="color:aliceblue">IVE Contract Address:</b>
+                                    </td>
+                                    <td>
+                                        <input style="border-radius: 10px;text-align: center;font-size: 20px;padding: 20px;border:none;background-color: rgb(255, 255, 255);" value="  0x1597b142Ebf843E98819C41f610548117E90Df60" type="text" size="72" readonly/>
+                                      
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                        <h2>Get free ETH :</h2>
+                        <table border="0" width="1200px" style="border-radius: 10px;padding: 20px;background-color:rgba(24, 53, 240, 0.821);">
+                            <tr>
+                                <td>
+                                   <b style="color:aliceblue"> Website [ Get ETH ] :</b>
+                                </td>
+                                <td>
+                                    <input style="border-radius: 10px;text-align: center;font-size: 20px;padding: 20px;border:none;background-color: rgb(255, 255, 255);" value="https://rinkebyfaucet.com/" type="text" size="72" readonly/>
+
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            
+                        </table>
+    
+                      </div>
+                  <div>
+                    <h2>Search balance :</h2>
+                    <table border="0" width="1200px" style="border-radius: 10px;padding: 20px;background-color:rgb(181, 240, 240);">
+                        <tr>
+                            <td>
+                                Input the public key :
+                            </td>
+                            <td>
+                                <input style="text-align: center;font-size: 20px;padding: 20px;border:none;background-color: bisque;" type="text" id="publickeyforsearch" size="72"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Return the result :
+                            </td>
+                            <td>
+                                <span id="resultbalance" readonly></span>
+                            </td>
+                            
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Account URL:
+                            </td>
+                            <td>
+                                <a href=""></a>
+                                <span id="account_link" readonly></span>
+                            </td>
+                            <td>
+                                <button style="border-radius: 5%;border: none;color: aliceblue;background-color: rgba(0, 140, 255, 0.874);cursor: pointer;padding: 10px;" onclick="searchBalance()">Search</button>
+                            </td>
+                        </tr>
+                        
+                    </table>
+
+                    
+
+                  </div>
+                  <div>
+                    <h2>NFT info :</h2>
+                    <table border="0" width="1200px" style="border-radius: 10px;padding: 20px;background-color:rgb(181, 240, 240);">
+                        <tr>
+                            <td>
+                                Input the public key :
+                            </td>
+                            <td>
+                                <input style="text-align: center;font-size: 20px;padding: 20px;border:none;background-color: bisque;" type="text" id="publicKey" size="72"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Return the result :
+                            </td>
+                            <td>
+                                <span id="resultNFTcount" readonly></span>
+                            </td>
+                            <td>
+                                <button onclick="getnft()" style="border-radius: 5%;border: none;color: aliceblue;background-color: rgba(0, 140, 255, 0.874);cursor: pointer;padding: 10px;">Count</button>
+                            </td>
+                        </tr>
+        
+                        
+                    </table>
+
+                    
+
+                  </div>
+
+
+
+
+
+
+              </div>
+            </div>
+        </div>
+
+    </body>
+</html>
